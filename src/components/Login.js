@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import * as auth from "./Auth";
+import * as auth from "../utils/Auth";
 
 function Login({ handleLogin }) {
   const { values, handleChange, setValues } = useForm({
@@ -51,9 +51,7 @@ function Login({ handleLogin }) {
           className="original__input original_input_password"
           placeholder="Пароль"
         />
-        <button className="original__button" onSubmit={handleSubmit}>
-          Войти
-        </button>
+        <button className="original__button">Войти</button>
       </form>
     </div>
   );

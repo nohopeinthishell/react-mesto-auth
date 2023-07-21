@@ -17,7 +17,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Register from "./Register";
 import ProtectedRouteElement from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
-import * as auth from "./Auth";
+import * as auth from "../utils/Auth";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -43,20 +43,6 @@ function App() {
     isAddPlacePopupOpen ||
     isImagePopupOpen ||
     isInfoTooltipOpen;
-
-  React.useEffect(() => {
-    function closeByEscape(evt) {
-      if (evt.key === "Escape") {
-        closeAllPopups();
-      }
-    }
-    if (isOpen) {
-      document.addEventListener("keydown", closeByEscape);
-      return () => {
-        document.removeEventListener("keydown", closeByEscape);
-      };
-    }
-  }, [isOpen]);
 
   React.useEffect(() => {
     api
@@ -139,27 +125,36 @@ function App() {
 
   function handleUpdateUser(data) {
     function makeRequest() {
-      return api.updateProfile(data).then((profileInfo) => {
-        setCurrentUser(profileInfo);
-      });
+      return api
+        .updateProfile(data)
+        .then((profileInfo) => {
+          setCurrentUser(profileInfo);
+        })
+        .catch((err) => console.log(err));
     }
     handleSubmit(makeRequest);
   }
 
   function handleUpdateAvatar(data) {
     function makeRequest() {
-      return api.updateAvatar(data).then((profileInfo) => {
-        setCurrentUser(profileInfo);
-      });
+      return api
+        .updateAvatar(data)
+        .then((profileInfo) => {
+          setCurrentUser(profileInfo);
+        })
+        .catch((err) => console.log(err));
     }
     handleSubmit(makeRequest);
   }
 
   function handleAddPlaceSubmit(data) {
     function makeRequest() {
-      return api.postNewCard(data).then((newCard) => {
-        setCurrentCards([newCard, ...currentCards]);
-      });
+      return api
+        .postNewCard(data)
+        .then((newCard) => {
+          setCurrentCards([newCard, ...currentCards]);
+        })
+        .catch((err) => console.log(err));
     }
     handleSubmit(makeRequest);
   }
@@ -175,13 +170,16 @@ function App() {
   function tokenCheck() {
     const token = localStorage.getItem("token");
     if (token) {
-      auth.getContent(token).then((res) => {
-        if (res) {
-          setEmail(res.data.email);
-          setLoggedIn(true);
-          navigate("/", { replace: true });
-        }
-      });
+      auth
+        .getContent(token)
+        .then((res) => {
+          if (res) {
+            setEmail(res.data.email);
+            setLoggedIn(true);
+            navigate("/", { replace: true });
+          }
+        })
+        .catch((err) => console.log(err));
     }
   }
 

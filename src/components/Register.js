@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import * as auth from "./Auth";
+import * as auth from "../utils/Auth";
 import { useForm } from "../hooks/useForm";
 
 function Register({ onInfoTooltip }) {
@@ -16,7 +16,6 @@ function Register({ onInfoTooltip }) {
     auth
       .register(email, password)
       .then((res) => {
-        console.log(res);
         onInfoTooltip(true);
       })
       .then(() => {
@@ -42,7 +41,7 @@ function Register({ onInfoTooltip }) {
           placeholder="Email"
         />
         <input
-          autocomplete="new-password"
+          autoComplete="new-password"
           value={password || ""}
           type="password"
           name="password"
@@ -51,9 +50,7 @@ function Register({ onInfoTooltip }) {
           className="original__input original_input_password"
           placeholder="Пароль"
         />
-        <button className="original__button" onSubmit={handleSubmit}>
-          Зарегистрироваться
-        </button>
+        <button className="original__button">Зарегистрироваться</button>
         <p className="original__registered-text">
           Уже зарегистрированы?{" "}
           <Link className="original__link" to="/signin">

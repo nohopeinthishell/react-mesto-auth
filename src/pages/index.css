@@ -1,7 +1,6 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/font.css);
 @import url(../blocks/root/root.css);
-@import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
@@ -54,3 +53,11 @@
 @import url(../blocks/popup/__tooltip-text/popup__tooltip-text.css);
 @import url(../blocks/header/__email/header__email.css);
 @import url(../blocks/header/__overlay/header__overlay.css);
+@import url(../blocks/header/__hamburger-button/header__hamburger-button.css);
+@import url(../blocks/header/__main/header__main.css);
+@import url(../blocks/header/__hamburger-menu/header__hamburger-menu.css);
+@import url(../blocks/header/__hamburger-menu/_open/header__hamburger-menu_open.css);
+@import url(../blocks/header/__hamburger-button/_close/header__hamburger-button_close.css);
+@import url(../blocks/header/__overlay/_invisible/header__overlay_invisible.css);
+@import url(../blocks/header/__hamburger-button/_entered/header__hamburger-button_entered.css);
+@import url(../blocks/header/__link/_original/header__link_original.css);
