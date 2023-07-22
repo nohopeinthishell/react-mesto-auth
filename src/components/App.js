@@ -130,7 +130,6 @@ function App() {
         .then((profileInfo) => {
           setCurrentUser(profileInfo);
         })
-        .catch((err) => console.log(err));
     }
     handleSubmit(makeRequest);
   }
@@ -142,7 +141,6 @@ function App() {
         .then((profileInfo) => {
           setCurrentUser(profileInfo);
         })
-        .catch((err) => console.log(err));
     }
     handleSubmit(makeRequest);
   }
@@ -154,7 +152,6 @@ function App() {
         .then((newCard) => {
           setCurrentCards([newCard, ...currentCards]);
         })
-        .catch((err) => console.log(err));
     }
     handleSubmit(makeRequest);
   }
